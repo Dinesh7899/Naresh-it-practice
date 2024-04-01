@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {a: [1, 2, 3], b: {key: 'value'}, c: new Date()};
+
+        //Check if keys exist and determine data types
+        if (obj.hasOwnProperty('b')) {
+            console.log('Key "b" exists');
+            console.log('Data type of value:', obj.b instanceof Object ? 'object' : typeof obj.b);
+        } else {
+            console.log('Key "d" does not exist');
+        }
+
+        if (obj.hasOwnProperty('d')) {
+            console.log('Key "d" exists');
+        } else {
+            console.log('key "d" does not exist');
+        }
+    </script>
+</body>
+</html>

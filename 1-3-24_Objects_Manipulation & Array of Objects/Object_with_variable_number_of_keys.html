@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="count"></p>
+    <script>
+        const dynamicObj = {a: 1, b: 2, c: 3};
+        dynamicObj.d = 4;
+        const countPara = document.getElementById('count');
+        const keysCount = Object.keys(dynamicObj).length;
+        countPara.textContent = `Total count of keys: ${keysCount}`;
+    </script>
+</body>
+</html>

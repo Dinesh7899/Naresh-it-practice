@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The javascript this keyword</h1>
+    <p>In this example this refers to the person object.</p>
+    <p>Because fullname is a method of the person object.</p>
+    <p id="demo"></p>
+
+    <script>
+        //Create an Object
+        const person = {
+            firstName: "john",
+            lastName: "Doe",
+            id: 5566,
+
+            fullname : function() {
+                return this.firstName + " " + this.lastName;
+
+            }
+        };
+
+        //Display data from the object.
+        document.getElementById("demo").innerHTML = person.fullname();
+
+    </script>
+</body>
+</html>

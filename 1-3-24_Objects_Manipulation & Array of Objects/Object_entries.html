@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="view"></p>
+    <script>
+
+        const obj = {a: 1, b: 2, c: 3};
+        const print = document.getElementById('view');
+        Object.entries(obj).forEach(([key, value]) => {
+            const keyy = `Key: ${key}, Value: ${value}`;
+            print.innerHTML += keyy + '<br>';
+        });
+    </script>
+</body>
+</html>

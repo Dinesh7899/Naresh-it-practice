@@ -1,0 +1,44 @@
+ <!-- In js, objects are collections of key-value pairs, where keys are unique identifiers for accessing values. To check if a specific key exists in an object, you can use various approaches such as:
+
+    1. Using the 'in operator: This operator checks if a property exists in an object, including properties in the object's prototype chain.
+
+    2. Using the 'hasOwnProperty()' method: This method checks if an object has a property with a specified key. It returns 'true' if the property is directly present in the object, not inherited through the prototype chain.
+
+    Using the 'typeof' operator: This operator returns a string indicating the data type of its operand.
+    Using 'instanceof' operator: This operator checks if an object belongs to a specific data type, constructor, or prototype. -->
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using in &typeof operator</title>
+</head>
+<body>
+   
+<p id="output"></p>
+
+<script>
+    const obj = { a: 1, b: 'two', c: true};
+    const outputPara = document.getElementById('output');
+
+    //Check if keys exist and determine data types
+
+    if('a' in obj) {
+        outputPara.textContent += 'Key "a" exists\n';
+        outputPara.textContent += 'Data type of value: ' + typeof obj.a +'\n';
+    } else {
+        outputPara.textContent += 'Key "a" does not exist\n';
+
+    }
+
+    if ('d' in obj) {
+        outputPara.textContent += 'Key "d" exists\n';
+    } else {
+        outputPara.textContent += 'Key "d" does not exist\n';
+    }
+</script>
+
+</body>
+</html>

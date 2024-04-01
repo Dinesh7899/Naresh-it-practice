@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>using a function to count keys..</title>
+</head>
+<body>
+    <p id="view"></p>
+    <script>
+        function countKeys(obj) {
+            return Object.keys(obj).length;
+
+        }
+        const obj = {a: 1, b: 2, c: 3};
+        const countPara = document.getElementById('view');
+        const keyCount = countKeys(obj);
+        countPara.textContent = `Total count of keys: ${keyCount}`;
+    </script>
+</body>
+</html>

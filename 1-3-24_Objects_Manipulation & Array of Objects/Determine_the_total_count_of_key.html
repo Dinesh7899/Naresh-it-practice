@@ -1,0 +1,22 @@
+<!-- objects are collections of key-value pairs. sometimes,you might need to know how many keys an object contains. To achieve this, we can use the `Object.key()`method. this method taes an object as its argument and returns an array containing the keys of that object.
+
+Once we have this array of keys, we can simply find its length to determine the total count of keys in th object.This gives us a quick and effective way to get this information without manually counting each key. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting keys in an Object</title>
+</head>
+<body>
+    <p id="count"></p>
+    <script>
+        const obj = {a: 1, b: 2, c: 3};
+        const print = document.getElementById('count');
+
+        const keysCount = Object.keys(obj).length;
+        print.textContent = `Total count of keys: ${keysCount}`;
+    </script>
+</body>
+</html>

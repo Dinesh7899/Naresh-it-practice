@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide key from Object</title>
+</head>
+<body>
+    <div id="output1"></div>
+    <div id="output2"></div>
+    <div id="output3"></div>
+
+    <script>
+        // Original objects
+        const object1 = {a: 1, b: 'two', c: true};
+        const object2 = {x: 10, y: 20, Z: 30};
+        const object3 = {name:'John', age: 30, city: 'New York'};
+
+        // Function to hide a key from an object and display the updated object
+        function hideKeyAndDisplay(obj, keyToHide, outputId) {
+            const outputdiv = document.getElementById(outputId);
+            const updatedobj = {};
+
+            //Iterate over the original object
+            for (let key in obj) {
+                if (key !== keyToHide) {
+                    updatedobj[key] = obj[key];
+                }
+            }
+
+            // Display original and updated objects
+            outputdiv.innerHTML += '<p>Original Object: ' + JSON.stringify(obj) + '</p>';
+            outputdiv.innerHTML += '<p>Updated Object: ' + JSON.stringify(updatedobj) + '</p>';
+        }
+
+        //Example 1: Hide key 'b' from object1
+        hideKeyAndDisplay(object1, 'y', 'output1');
+
+        // Example 2: Hide key 'y', output2
+        hideKeyAndDisplay(object2, 'y', 'output2');
+
+        // Example 3: Hide key 'age' from output3
+        hideKeyAndDispaly(object3, 'age', 'output3');
+
+
+    </script>
+    
+</body>
+</html>

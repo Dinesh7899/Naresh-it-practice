@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Key from Obj</title>
+</head>
+<body>
+    <div id="output1"></div>
+    <div id="output2"></div>
+    <div id="output3"></div>
+
+    <script>
+        //Original object
+        const object1 = { a: 1, b:'two', c: true};
+        const object2 = {x: 10, y: 20, z: 30};
+        const object3 = {name: 'John', age: 30, city: 'New York'};
+
+        //function to delete a key from an object and display the updated object
+        function deleteKeyAndDisplay(obj, key, outputId) {
+            const outputDiv = document.getElementById(outputId);
+
+            // Display original object
+            outputDiv.innerHTML += '<p>Original Object: ' + JSON.stringify(obj) + '</p>';
+
+            // Delete key from the object
+            delete obj[key];
+
+            // Display updated object
+            outputDiv.innerHTML += '<p>Updated Object: ' + JSON.stringify(obj) + '</p>';
+        }
+
+        //Example 1: Delete key 'b' from object1
+        deleteKeyAndDisplay(object1, 'b','output1');
+
+        //Example 2: delete key 'y' from object2
+        deleteKeyAndDisplay(object2, 'age', 'output2');
+
+        //Example 3: Delete key 'age' from object3
+        deleteKeyAndDisplay(object3, 'age','output3');
+
+
+    </script>
+    
+</body>
+</html>

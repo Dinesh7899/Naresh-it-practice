@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Key from Object</title>
+</head>
+<body>
+    <p id="print"></p>
+    <p id="updated"></p>
+
+    <script>
+        const object = {a: 1, b: 'two', c: true};
+        const para = document.getElementById('print');
+        const updatedPara = document.getElementById('updated');
+
+        // Display original object
+        para.textcontent = 'Original Object: ' + JSON.stringify(object);
+
+        // Delete key 'b' from object
+        delete object['b'];
+
+        // Didplay updated object
+        updatedPara.textContent = 'Updated Object: ' + JSON.stringify(object);
+    </script>
+</body>
+</html>

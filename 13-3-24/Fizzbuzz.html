@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+
+    <script>
+         // Write a js ptogram that iterates from 1 to 100. But for multiples of three print 'Fizz' instead of the num & for multiples of five print "Buzz".For nums multiples of both three & five print 'fizzBuzz'.
+        for (var i = 1; i <= 100; i++) {
+            //check if the number is divided by both 3 & 5
+            if(i % 3 === 0 && i % 5 === 0) {
+                document.write(i + "FizzBuzz"); 
+                
+            }
+            // Check if the number is divisible by 3
+            else if (i % 3 === 0) {
+                document.write(i + "Fizz");
+            }
+            // Check if the number is divisible by 5
+            else if (i % 5 === 0) {
+                document.write(i + "Buzz");
+            } else {
+                document.write(i);
+            }
+        }
+    </script>
+</body>
+</html>

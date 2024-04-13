@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num1 = window.prompt("Input the first int", "0");
+        let num2 = window.prompt("Input the second int", "0");
+
+        if(parseInt(num1) > parseInt(num2)) {
+            document.write("The largest number is "+ num1);
+        }else if (parseInt(num2) > parseInt(num1)) {
+            document.write("The largest number b/w " + num1 + " & " + num2 + " is " + num2);
+        }
+        else {
+            document.write("the value of " + num1 + " & " + num2 + "is equal.");
+        }
+
+
+    </script>
+</body>
+</html>

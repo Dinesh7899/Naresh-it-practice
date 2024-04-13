@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+</head>
+<body>
+    <h1>Population of Cities</h1>
+    <button onclick="addCity()">Add City</button>
+    <button onclick="removeCity()">Remove City</button>
+    <button onclick="displayCities()">Display Cities</button>
+
+    <script>
+        //Create a map to store city population
+        let cityPopulation = new Map();
+
+        //Function to add a city and its population to the map
+        function addCity() {
+            let cityName = prompt("Enter city name: ");
+            let population = prompt("Enter population: ");
+            cityPopulation.set(cityName, parseInt(population));
+            alert(cityName + " added to the list.");
+        }
+
+        //Function to remove a city from the map
+        function removeCity() {
+            let cityName = prompt("Enter city name to remove: ");
+            if (cityPopulation.has(cityName)) {
+                cityPopulation.delete(cityName);
+                alert(cityName + "removed from the list.");
+            } else {
+                alert(cityName + "not found in the list");
+            }
+        }
+
+        //Function to display all cities and their populations
+        function displayCities() {
+            console.log("Cities and their populations: ");
+            cityPopulation.forEach((population, city) => {
+                console.log(city + ": " + population);
+            });
+        }
+    </script>
+</body>
+</html>

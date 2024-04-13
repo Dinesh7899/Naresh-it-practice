@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compute the average & Grade</title>
+</head>
+<body>
+   
+    <script>
+         //Computes the average marks  of the following students. Then, this average is used to determine the corresponding grade.
+        let students = [['David', 80],['Vinoth', 77],['Divya', 88],['Ishitha', 95],['Thomas',68]];
+
+        let Avgmarks = 0;
+
+        // Loop through the students array to calculate the total marks
+        for (var i=0; i < students.length; i++) {
+            Avgmarks += students[i][1];
+            let avg = (Avgmarks / students.length);
+        }
+        //Calculate & log the average grade
+        document.write("Average grade:" + (Avgmarks) / students.length);
+
+        //Determine the grade based on the average
+        if (avg < 60) {
+            document.write("Grade: F");
+        } else if (avg < 70) {
+            document.write("Grade: D");
+        } else if (avg < 80){
+            document.write("Grade: C");
+        }else if (avg < 90){
+            document.write("Grade: B");
+        }else if (avg <= 100) {
+            document.write("Grade: A");
+        }
+    </script>
+</body>
+</html>

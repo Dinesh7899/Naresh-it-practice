@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hotel Registration Form</title>
+</head>
+<body>
+    <header>
+        <h1>Hotel Registration Form</h1>
+    </header>
+    <div class="customer-info">
+        <h2>Customer Information</h2>
+        <form id="customer-form">
+            <label for="customer-name">Customer Name:</label>
+            <input type="text" id="customer-name" name="customer-name"> <br>
+            <label for="check-in-date">Check In Date:</label>
+            <input type="date" id="check-in-date" name="check-in-date"><br>
+            <label for="no-of-days">No. of Days to Stay:</label>
+            <input type="number" id="no-of-days" name="no-of-days"><br>
+            <label for="total-members">Total No. of Members:</label>
+            <input type="number" id="total-members" name="total-members">
+        </form>
+    </div>
+    <div class="info">Select Room Type</div>
+    <div class="SelectRoom">
+        <div class="select">
+            <label>
+                <img src="https://img.freepik.com/free-photo/3d-rendering-beautiful-luxury-dark-wood-european-classic-bedroom-suite-hotel_105762-2164.jpg?t=st=1713177457~exp=1713181057~hmac=1bd1070f5e0933b6c2301d7fcd15d25a2de89cc9849493ea67534bdaa0410e3b&w=996" alt=""><br>
+                <span>Deluxe Room <b>(₹500)</b></span>
+                <input type="checkbox" name="room-type" value="deluxe" data-price="500">
+            </label>
+            <label>
+                <img src="https://img.freepik.com/free-photo/3d-rendering-luxury-bedroom-suite-resort-hotel-with-twin-bed-living_105762-2018.jpg?t=st=1713177675~exp=1713181275~hmac=ef29444810f1acc46f277c39ce45ca778885616f918fe73938b8484a6f333de5&w=996" alt=""><br>
+                <span>Suit Room <b>(₹300)</b></span>
+                <input type="checkbox" name="room-type" value="suite" data-price="300">
+            </label>
+        </div>
+    </div>
+    <div class="info">Select Amenities</div>
+    <div class="SelectRoom">
+        <div class="select">
+            <label>
+                <img src="https://img.freepik.com/premium-photo/close-up-shot-newly-installed-white-air-conditioner-working-ac-hanging-pastel-color-wall-with-lot-copy-space-text-background-generative-ai_653669-1282.jpg?w=996" alt=""><br>
+                <span>A/C <b>(₹200)</b></span>
+                <input type="checkbox" name="amenity" value="AC" data-price="200">
+            </label>
+            <label>
+                <img src="https://img.freepik.com/premium-psd/3d-render-money-safebox-icon-isolated-premium-psd_466968-426.jpg?w=740" alt=""><br>
+                <span>Locker <b>(₹100)</b></span>
+                <input type="checkbox" name="amenity" value="locker" data-price="100">
+            </label>
+        </div>
+    </div>
+
+    <div class="info">Advance Payment</div>
+    <div class="advance">
+        <label for="advance">Enter Advance Payment (₹):</label>
+        <input type="number" id="advance-payment" name="advance-payment" min="0">
+        
+        <h2>Total Price</h2>
+        <p class="" id="total-price">Total Price: ₹0</p>
+    </div>
+
+    <div class="registration-info">
+        <h2>Registration Details</h2>
+        <p id="registration-details"></p>
+        <p id="total-amount"></p>
+    </div>
+
+    <button  id="button" onclick="register()">Register</button>
+
+    <div class="overall-bill">
+        <h2>Overall Bill Description</h2>
+        <p id="overall-bill-details"></p>
+        <p id="overall-total-amount"></p>
+    </div>
+
+    <button id="button" onclick="printPDF()">Print PDF</button>
+
+   
+    <script>
+        
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const advancePaymentInput = document.getElementById('advance-payment');
+        const totalPriceDisplay = document.getElementById('total-price');
+        const customerForm = document.getElementById('customer-form');
+
+        function calculateTotalPrice() {
+            let totalPrice = 0;
+
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalPrice += parseInt(checkbox.dataset.price);
+                }
+            });
+
+            totalPrice += parseInt(advancePaymentInput.value) || 0;
+            totalPriceDisplay.textContent = `Total Price: ₹${totalPrice}`;
+
+            return totalPrice;
+        }
+
+        function register() {
+            const customerName = document.getElementById('customer-name').value;
+            const checkInDate = document.getElementById('check-in-date').value;
+            const noOfDays = parseInt(document.getElementById('no-of-days').value) || 0;
+            const totalMembers = parseInt(document.getElementById('total-members').value) || 0;
+            const selectedRoom = document.querySelector('input[name="room-type"]:checked') ? document.querySelector('input[name="room-type"]:checked').value : '';
+            const selectedAmenities = document.querySelectorAll('input[name="amenity"]:checked');
+            const amenitiesList = Array.from(selectedAmenities).map(amenity => amenity.value).join(', ');
+            const advancePayment = parseInt(advancePaymentInput.value) || 0;
+            const totalPrice = calculateTotalPrice();
+
+            const registrationDetails = `Customer Name: ${customerName}<br>
+                                         Check In Date: ${checkInDate}<br>
+                                         No. of Days to Stay: ${noOfDays}<br>
+                                         Total No. of Members: ${totalMembers}<br>
+                                         Selected Room: ${selectedRoom}<br>
+                                         Selected Amenities: ${amenitiesList}<br>
+                                         Advance Payment: ₹${advancePayment}<br>`;
+
+            const totalAmount = `Total Amount: ₹${totalPrice * noOfDays}`;
+
+            document.getElementById('registration-details').innerHTML = registrationDetails;
+            document.getElementById('total-amount').innerHTML = totalAmount;
+
+            const additionalCharges = totalMembers > 2 ? (totalMembers - 2) * 1000 : 0;
+            const overallTotalAmount = `Overall Total Amount: ₹${totalPrice * noOfDays + additionalCharges}`;
+            document.getElementById('overall-total-amount').innerHTML = overallTotalAmount;
+
+            const overallBillDetails = `${registrationDetails}<br>Total Price (for ${noOfDays} days): ₹${totalPrice * noOfDays}<br>Additional Charges (for ${totalMembers - 2} additional members): ₹${additionalCharges}`;
+            document.getElementById('overall-bill-details').innerHTML = overallBillDetails;
+        }
+
+        function printPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
